@@ -1,0 +1,48 @@
+---
+base: &basic
+  - example_bashrc
+
+desktop: &desktop
+  - example_osx
+
+vcs: &vcs
+  - example_gitconfig
+
+ruby: &ruby
+  - example_gemrc
+
+post:
+  install: &vim_bundles
+    - ~/.example_install_bundles
+
+osx: &osx
+  config_files:
+    - *basic
+    - *desktop
+    - *vcs
+    - *ruby
+
+  post:
+    install:
+      - *vim_bundles
+      - ~/.example_hooks/post_install.sh
+    update:
+      - *vim_bundles
+      - ~/.example_hooks/post_update.sh
+
+linux: &linux
+  config_files:
+    - *basic
+    - *vcs
+    - *ruby
+  post:
+    install:
+      - *vim_bundles
+      - ~/.example_hooks/post_install_ubuntu.sh
+
+flavors:
+  osx: *osx
+  linux: *linux
+  production:
+    config_files:
+      - example_production_aliases
