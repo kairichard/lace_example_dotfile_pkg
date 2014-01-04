@@ -1,6 +1,9 @@
 ---
+version: 0.1
+homepage: https://github.com/kairichard/lace
 base: &basic
   - example_bashrc
+  - example_hooks
 
 desktop: &desktop
   - example_osx
@@ -13,7 +16,7 @@ ruby: &ruby
 
 post:
   install: &vim_bundles
-    - ~/.example_install_bundles
+    - ~/.example_hooks/bundles.sh
 
 osx: &osx
   config_files:
