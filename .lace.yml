@@ -16,7 +16,7 @@ ruby: &ruby
 
 post:
   install: &vim_bundles
-    - ~/.example_hooks/bundles.sh
+    - <%= @package_path/"example_hooks/bundles.sh" %>
 
 osx: &osx
   config_files:
@@ -27,12 +27,12 @@ osx: &osx
 
   setup:
     - *vim_bundles
-    - ~/.example_hooks/post_install.sh
+    - /example_hooks/post_install.sh
 
   post:
     update:
       - *vim_bundles
-      - ~/.example_hooks/post_update.sh
+      - <%= @package_path/"example_hooks/post_update.sh" %>
 
 linux: &linux
   config_files:
@@ -42,7 +42,7 @@ linux: &linux
 
   setup:
     - *vim_bundles
-    - ~/.example_hooks/post_install_ubuntu.sh
+    - <%= @package_path/"example_hooks/post_install_ubuntu.sh" %>
 
 flavors:
   osx: *osx
